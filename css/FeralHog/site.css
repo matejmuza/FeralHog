@@ -1,0 +1,189 @@
+html {
+  height: 100%; }
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+header {
+  height: 53px;
+  background: url("../../img/barcolor.png"); }
+  header img.logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1; }
+
+#map {
+  width: 100%;
+  position: absolute;
+  top: 53px;
+  bottom: 0; }
+  #map img {
+    max-width: none; }
+
+.observationContainer {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  top: 21px;
+  width: 600px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0px 0px 5px 5px;
+  /* Saf3-4, iOS 1-3.2, Android <1.6 */
+  -moz-border-radius: 0px 0px 5px 5px;
+  /* FF1-3.6 */
+  border-radius: 0px 0px 5px 5px;
+  /* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */
+  border: 1px solid transparent;
+  -webkit-box-shadow: 0 1px 5px -1px #022113;
+  -moz-box-shadow: 0 1px 5px -1px #022113;
+  box-shadow: 0 1px 5px -1px #022113;
+  /* For IE 8 */ }
+  .observationContainer.smallWindow {
+    left: 380px;
+    margin-left: 0;
+    margin-right: 0; }
+  .observationContainer .observationNav {
+    background-color: #e6e6e6;
+    border-bottom: 1px solid #022113; }
+    .observationContainer .observationNav a {
+      display: block;
+      width: 200px;
+      float: left;
+      text-align: center;
+      color: white;
+      background-color: #945227;
+      font-size: 1.3em;
+      line-height: 1.7em;
+      -webkit-box-shadow: inset 0 0 3px #c66a2c;
+      -moz-box-shadow: inset 0 0 3px #c66a2c;
+      box-shadow: inset 0 0 3px #c66a2c;
+      /* For IE 8 */ }
+      .observationContainer .observationNav a.active {
+        background-color: #c66a2c;
+        -webkit-box-shadow: inset 0 0 3px #945227;
+        -moz-box-shadow: inset 0 0 3px #945227;
+        box-shadow: inset 0 0 3px #945227;
+        /* For IE 8 */ }
+        .observationContainer .observationNav a.active:hover {
+          background-color: #c66a2c; }
+      .observationContainer .observationNav a:hover {
+        text-decoration: none;
+        background-color: #d17131; }
+      .observationContainer .observationNav a.centerA {
+        width: 198px;
+        border-left: 1px solid #022113;
+        border-right: 1px solid #022113; }
+  .observationContainer div p {
+    float: left;
+    width: 48%;
+    margin: 0% 2% 0% 0%;
+    text-align: right;
+    line-height: 18px; }
+    .observationContainer div p.dataP {
+      text-align: left;
+      line-height: 19px;
+      word-break: break-all; }
+  .observationContainer div.observationBody {
+    float: left;
+    width: 100%;
+    min-height: 100px;
+    padding: 1% 0%; }
+    .observationContainer div.observationBody p.longP {
+      text-align: center;
+      width: 100%;
+      margin: 0; }
+      .observationContainer div.observationBody p.longP.noItemsP {
+        margin: 30px 0px;
+        font-weight: bold; }
+    .observationContainer div.observationBody .carousel {
+      margin-bottom: 0px; }
+      .observationContainer div.observationBody .carousel.actionCarousel {
+        margin-bottom: 10px; }
+      .observationContainer div.observationBody .carousel .item a.imgA {
+        width: 47%;
+        display: block;
+        float: none;
+        margin: 0 auto; }
+        .observationContainer div.observationBody .carousel .item a.imgA:active {
+          outline: none; }
+        .observationContainer div.observationBody .carousel .item a.imgA img {
+          border-radius: 3px; }
+      .observationContainer div.observationBody .carousel .item.hasTwoItems a.imgA {
+        float: left;
+        margin-left: 2%; }
+      .observationContainer div.observationBody .carousel .carousel-indicators {
+        position: relative;
+        left: 0;
+        top: 0;
+        padding: 0px 15px 2px; }
+        .observationContainer div.observationBody .carousel .carousel-indicators li {
+          background-color: gray;
+          color: white;
+          width: 18px;
+          height: 18px;
+          text-indent: 0px;
+          text-align: center;
+          font-weight: bold;
+          line-height: 18px;
+          border-radius: 10px;
+          margin: 2px; }
+          .observationContainer div.observationBody .carousel .carousel-indicators li:hover {
+            cursor: pointer; }
+          .observationContainer div.observationBody .carousel .carousel-indicators li.active {
+            background-color: #138613; }
+          .observationContainer div.observationBody .carousel .carousel-indicators li.hasTwoItems {
+            width: 46px; }
+  .observationContainer div.leftCol, .observationContainer div.rightCol {
+    float: left;
+    width: 48%;
+    padding: 0 1%; }
+
+.photosModal.modal {
+  width: 800px;
+  margin-left: -400px; }
+  .photosModal.modal .modal-body {
+    max-height: 800px;
+    padding: 8px; }
+  .photosModal.modal .carousel {
+    margin-bottom: 0px; }
+  .photosModal.modal .carousel-control {
+    top: 48%; }
+  .photosModal.modal img {
+    width: 100%;
+    border-radius: 3px; }
+
+a.closeBtn {
+  float: right;
+  background: #3c3c3c url("../../img/close_white.png") center no-repeat;
+  position: absolute;
+  right: -15px;
+  z-index: 99;
+  border-radius: 15px;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1.7em;
+  font-size: 0.8em;
+  -webkit-box-shadow: 0 0 2px 1px gray;
+  -moz-box-shadow: 0 0 2px 1px gray;
+  box-shadow: 0 0 2px 1px gray;
+  /* For IE 8 */ }
+  a.closeBtn:hover {
+    background: #bb3e3e url("../../img/close_white.png") center no-repeat; }
+  a.closeBtn.picClose {
+    top: -17px; }
+  a.closeBtn.obsClose {
+    right: -17px;
+    bottom: -15px; }

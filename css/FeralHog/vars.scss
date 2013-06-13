@@ -1,0 +1,24 @@
+//Colors
+$lightBG: white;
+$lightGray: #E6E6E6;
+$darkGray: #3c3c3c;
+$activeGreen: #138613;
+
+$borderGray: gray;
+$borderRed: #bb3e3e;
+$borderBlack: #022113;
+
+$lightText: white;
+$darkText: #333333;
+
+//observationNavColors
+$Orange: #b4642f;
+$lightOrange: saturate(lighten($Orange, 3%), 5%);
+$darkOrange: darken($Orange, 8%);
+
+
+//Image paths
+$headLogo: '../../img/FeralHogLogoTop.png';
+$headBar: '../../img/barcolor.png';
+$closeWhite: '../../img/close_white.png';
+

@@ -1,0 +1,211 @@
+@import 'vars';
+@import 'mixins';
+
+html { 
+	height: 100% 
+}
+body { 
+	height: 100%; 
+	margin: 0; 
+	padding: 0 
+}
+header{
+    height:53px;
+    background: url($headBar);
+    img.logo{
+        position:absolute;
+        left:0;
+        top:0;
+        z-index:1;
+    }
+}
+#map { 
+    width: 100%;
+    position:absolute;
+    top:53px;
+    bottom:0;
+	img {
+        max-width: none;
+  }
+}
+.observationContainer {
+  display:none;
+  z-index:1;
+  position:absolute;
+  top:21px;
+  width:600px;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+  background-color: $lightBG;
+  @include rounded-specific (0px, 0px, 5px, 5px);
+  border:1px solid transparent;
+  @include box-shadow(0 1px 5px -1px $borderBlack);
+  &.smallWindow{
+    left:380px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .observationNav{
+    background-color:$lightGray;
+    border-bottom:1px solid $borderBlack;
+    a{
+      display:block;
+      width:200px;
+      float: left;
+      text-align: center;
+      color:$lightText;
+      background-color:$darkOrange;
+      font-size: 1.3em;
+      line-height: 1.7em;
+      @include box-shadow(inset 0 0 3px $lightOrange);
+      &.active{
+        background-color:$lightOrange;
+      @include box-shadow(inset 0 0 3px $darkOrange);
+        &:hover{
+          background-color:$lightOrange;
+        }
+      }
+      &:hover{
+        text-decoration:none;
+        background-color:lighten($lightOrange, 3%);
+      }
+      &.centerA{
+        width:198px;
+        border-left:1px solid $borderBlack;
+        border-right:1px solid $borderBlack;
+      }
+    }
+  }
+  div {
+    p{
+      float: left;
+      width:48%;
+      margin:0% 2% 0% 0%;
+      text-align:right;
+      line-height:18px;
+      &.dataP{
+        text-align:left;
+        line-height:19px;
+        word-break:break-all;
+      }
+    }
+    &.observationBody{
+      float:left;
+      width:100%;
+      min-height:100px;
+      padding:1% 0%;
+      p.longP{
+        text-align: center;
+        width:100%;
+        margin: 0;
+        &.noItemsP{
+          margin: 30px 0px;
+          font-weight: bold;
+        }
+      }
+      .carousel {
+        margin-bottom: 0px;
+        &.actionCarousel {
+          margin-bottom: 10px;
+        }
+        .item{
+          a.imgA{
+            width: 47%;
+            display: block;
+            float: none;
+            margin: 0 auto;
+            &:active{
+              outline: none;
+            }
+            img{
+              border-radius: 3px;
+            }
+          }
+          &.hasTwoItems a.imgA{
+            float: left;
+            margin-left: 2%;
+          }
+        }
+        .carousel-indicators{
+          position:relative;
+          left: 0;
+          top: 0;
+          padding: 0px 15px 2px;
+          li {
+            background-color: $borderGray;
+            color:$lightText;
+            width: 18px;
+            height: 18px;
+            text-indent:0px;
+            text-align:center;
+            font-weight: bold;
+            line-height: 18px;
+            border-radius: 10px;
+            margin: 2px;
+            &:hover{
+              cursor:pointer;
+            }
+            &.active{
+              background-color: $activeGreen;
+            }
+            &.hasTwoItems{
+              width: 46px;
+            }
+          }
+        }
+      }
+    }
+    &.leftCol, &.rightCol{
+      float:left;
+      width: 48%;
+      padding: 0 1%;
+    }
+  }
+}
+.photosModal.modal{
+  width: 800px;
+  margin-left: -400px;
+  .modal-body{
+    max-height: 800px;
+    padding: 8px;
+  }
+  .carousel {
+    margin-bottom: 0px;
+  }
+  .carousel-control {
+    top:48%;
+  }
+  img{
+    width:100%;
+    border-radius: 3px;
+  }
+}
+
+a.closeBtn{
+  float: right;
+  background: $darkGray url($closeWhite) center no-repeat;
+  position:absolute;
+  right: -15px;
+  z-index: 99;
+  border-radius: 15px;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  line-height: 1.7em;
+  font-size: 0.8em;
+  @include box-shadow(0 0 2px 1px $borderGray);
+  &:hover{
+    background: $borderRed url($closeWhite) center no-repeat;
+  }
+  &.picClose{
+    top: -17px;
+  }
+  &.obsClose{
+    right:-17px;
+    bottom:-15px;
+  }
+}

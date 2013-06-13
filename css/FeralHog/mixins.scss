@@ -1,0 +1,123 @@
+
+@mixin grad($start, $stop) {
+  background-color: $start;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($start), to($stop)); // Saf4+, Chrome
+  background-image: -webkit-linear-gradient(top, $start, $stop); // Chrome 10+, Saf5.1+, iOS 5+
+  background-image:    -moz-linear-gradient(top, $start, $stop); // FF3.6
+  background-image:     -ms-linear-gradient(top, $start, $stop); // IE10
+  background-image:      -o-linear-gradient(top, $start, $stop); // Opera 11.10+
+  background-image:         linear-gradient(top, $start, $stop);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$start}', EndColorStr='#{$stop}'); // IE6-IE9
+}
+
+@mixin box-shadow($shadow: 0px 0px 2px 4px #777) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+        
+  /* For IE 8 */
+  //-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#555')";
+  //filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=180, Color='#555');
+}
+
+@mixin shadow($offx: 0px, $offy: 2px, $blur: 4px, $color: #777) {
+  -webkit-box-shadow: $offx $offy $blur $color;
+  -moz-box-shadow: $offx $offy $blur $color;
+  box-shadow: $offx $offy $blur $color;
+        
+  /* For IE 8 */
+  //-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#555')";
+  //filter: progid:DXImageTransform.Microsoft.Shadow(Strength=5, Direction=180, Color='#555');
+}
+
+@mixin remove-shadow() {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+@mixin no-clip {                             
+  -moz-background-clip: padding; 
+  -webkit-background-clip: padding-box; 
+  background-clip: padding-box;
+}
+
+@mixin rounded-all($rad: 6px) {
+  @include no-clip;
+  -webkit-border-radius: $rad;   /* Saf3-4, iOS 1-3.2, Android <1.6 */
+  -moz-border-radius: $rad;      /* FF1-3.6 */
+  border-radius: $rad;           /* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */      
+}
+
+
+@mixin rounded-specific($topLeft: 0px, $topRight: 0px, $bottomRight: 0px, $bottomLeft: 0px) {
+  @include no-clip;
+  -webkit-border-radius: $topLeft $topRight $bottomRight $bottomLeft;   /* Saf3-4, iOS 1-3.2, Android <1.6 */
+  -moz-border-radius: $topLeft $topRight $bottomRight $bottomLeft;       /* FF1-3.6 */
+  border-radius: $topLeft $topRight $bottomRight $bottomLeft;           /* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */      
+}
+
+@mixin clearfix {
+  &:before, &:after {
+     content:"";
+     display:table;
+  }
+  &:after {
+      clear:both;
+  }
+  zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+@mixin containbg {
+  background-size: contain;
+  -moz-background-size: contain;
+} 
+@mixin box-sizing ($type){
+  -webkit-box-sizing: $type;
+  -moz-box-sizing: $type;
+  box-sizing: $type;
+}
+
+@mixin btn-custom ($lightColor: #00e012, $darkColor: #008e0b, $color: #fff) {
+  background-color: $darkColor !important;
+  background-repeat: repeat-x;
+  filter: none;
+  background-image: -khtml-gradient(linear, left top, left bottom, from($lightColor), to($darkColor));
+  background-image: -moz-linear-gradient(top, $lightColor, $darkColor);
+  background-image: -ms-linear-gradient(top, $lightColor, $darkColor);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $lightColor), color-stop(100%, $darkColor));
+  background-image: -webkit-linear-gradient(top, $lightColor, $darkColor);
+  background-image: -o-linear-gradient(top, $lightColor, $darkColor);
+  background-image: linear-gradient($lightColor, $darkColor);
+  border-color: $darkColor $darkColor darken($darkColor, 5%);
+  color: $color !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.20);
+  -webkit-font-smoothing: antialiased;
+}
+@mixin btn-custom-hover($lightColor: #00e012) {
+  text-decoration: none;
+  background-color: $lightColor;
+  *background-color: $lightColor;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-position: 0 -15px;
+  -webkit-transition: background-position .1s linear;
+  -moz-transition: background-position .1s linear;
+  -ms-transition: background-position .1s linear;
+  -o-transition: background-position .1s linear;
+  transition: background-position .1s linear;
+}
+@mixin btn-custom-IEhover($darkColor: #008e0b) {
+  background-color: lighten($darkColor, 5%) !important;
+  *background-color: lighten($darkColor, 5%) !important;
+  background-image: none;
+  filter: none;
+}
