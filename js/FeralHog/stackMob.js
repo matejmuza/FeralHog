@@ -16,7 +16,7 @@
       var user,
         _this = this;
       StackMob.init({
-        publicKey: "08cc0daa-0da5-48a5-a526-74a5f4624eb7",
+        publicKey: "f81efb10-659a-471c-9d80-09dccdac468a",
         apiVersion: 0
       });
       user = new StackMob.User({
