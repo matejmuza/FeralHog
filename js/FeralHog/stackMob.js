@@ -13,11 +13,15 @@
       this.fetchObservations = __bind(this.fetchObservations, this);
       this.fetchActions = __bind(this.fetchActions, this);
       this.fetchPhotos = __bind(this.fetchPhotos, this);
-      var user,
+      var appKey, appUrl, appVersion, devVersion, user,
         _this = this;
+      appUrl = window.location.href;
+      devVersion = appUrl.search("dev");
+      appKey = devVersion !== -1 ? "08cc0daa-0da5-48a5-a526-74a5f4624eb7" : "f81efb10-659a-471c-9d80-09dccdac468a";
+      appVersion = devVersion !== -1 ? 0 : 1;
       StackMob.init({
-        publicKey: "f81efb10-659a-471c-9d80-09dccdac468a",
-        apiVersion: 0
+        publicKey: appKey,
+        apiVersion: appVersion
       });
       user = new StackMob.User({
         username: "viewer@example.com",

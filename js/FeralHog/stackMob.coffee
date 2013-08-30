@@ -2,9 +2,13 @@
 
 class FeralHog.FhStackMob
     constructor: ->
+        appUrl = window.location.href
+        devVersion = appUrl.search("dev")
+        appKey = if devVersion isnt -1 then "08cc0daa-0da5-48a5-a526-74a5f4624eb7" else "f81efb10-659a-471c-9d80-09dccdac468a"
+        appVersion = if devVersion isnt -1 then 0 else 1
         StackMob.init
-            publicKey: "f81efb10-659a-471c-9d80-09dccdac468a"
-            apiVersion: 0
+            publicKey: appKey
+            apiVersion: appVersion
         user = new StackMob.User {username: "viewer@example.com", password: "pass"}
         user.login true,
             success: =>
