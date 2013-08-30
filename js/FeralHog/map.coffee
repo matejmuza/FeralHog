@@ -14,19 +14,20 @@ class FeralHog.Map
         bounds = new google.maps.LatLngBounds()
         FeralHog.mapMarkers = []
         markersArray = []
-        for obs, i in FeralHog.observations.models
-            latlng = new google.maps.LatLng obs.attributes.location.lat, obs.attributes.location.lon
-            bounds.extend latlng
-            id = obs.id
-            FeralHog.mapMarkers[id] = new google.maps.Marker
-                position: latlng
-                map: @map
-            google.maps.event.addListener FeralHog.mapMarkers[id], "click", @toggleObservation(id)
-            markersArray.push(FeralHog.mapMarkers[id])
-        @map.fitBounds bounds
-        clustererOptions = {maxZoom: 15}
-        clusterer = new MarkerClusterer @map, markersArray, clustererOptions
-        google.maps.event.addListener @map, "click", ()=> FeralHog.router.navigate "", {trigger: true}
+        if FeralHog.observations.models.length > 0
+            for obs, i in FeralHog.observations.models
+                latlng = new google.maps.LatLng obs.attributes.location.lat, obs.attributes.location.lon
+                bounds.extend latlng
+                id = obs.id
+                FeralHog.mapMarkers[id] = new google.maps.Marker
+                    position: latlng
+                    map: @map
+                google.maps.event.addListener FeralHog.mapMarkers[id], "click", @toggleObservation(id)
+                markersArray.push(FeralHog.mapMarkers[id])
+            @map.fitBounds bounds
+            clustererOptions = {maxZoom: 15}
+            clusterer = new MarkerClusterer @map, markersArray, clustererOptions
+            google.maps.event.addListener @map, "click", ()=> FeralHog.router.navigate "", {trigger: true}
         
     toggleObservation: (id, marker) =>
         ()-> 

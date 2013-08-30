@@ -28,29 +28,31 @@
       bounds = new google.maps.LatLngBounds();
       FeralHog.mapMarkers = [];
       markersArray = [];
-      _ref1 = FeralHog.observations.models;
-      for (i = _i = 0, _len = _ref1.length; _i < _len; i = ++_i) {
-        obs = _ref1[i];
-        latlng = new google.maps.LatLng(obs.attributes.location.lat, obs.attributes.location.lon);
-        bounds.extend(latlng);
-        id = obs.id;
-        FeralHog.mapMarkers[id] = new google.maps.Marker({
-          position: latlng,
-          map: this.map
+      if (FeralHog.observations.models.length > 0) {
+        _ref1 = FeralHog.observations.models;
+        for (i = _i = 0, _len = _ref1.length; _i < _len; i = ++_i) {
+          obs = _ref1[i];
+          latlng = new google.maps.LatLng(obs.attributes.location.lat, obs.attributes.location.lon);
+          bounds.extend(latlng);
+          id = obs.id;
+          FeralHog.mapMarkers[id] = new google.maps.Marker({
+            position: latlng,
+            map: this.map
+          });
+          google.maps.event.addListener(FeralHog.mapMarkers[id], "click", this.toggleObservation(id));
+          markersArray.push(FeralHog.mapMarkers[id]);
+        }
+        this.map.fitBounds(bounds);
+        clustererOptions = {
+          maxZoom: 15
+        };
+        clusterer = new MarkerClusterer(this.map, markersArray, clustererOptions);
+        google.maps.event.addListener(this.map, "click", function() {
+          return FeralHog.router.navigate("", {
+            trigger: true
+          });
         });
-        google.maps.event.addListener(FeralHog.mapMarkers[id], "click", this.toggleObservation(id));
-        markersArray.push(FeralHog.mapMarkers[id]);
       }
-      this.map.fitBounds(bounds);
-      clustererOptions = {
-        maxZoom: 15
-      };
-      clusterer = new MarkerClusterer(this.map, markersArray, clustererOptions);
-      google.maps.event.addListener(this.map, "click", function() {
-        return FeralHog.router.navigate("", {
-          trigger: true
-        });
-      });
     }
 
     Map.prototype.toggleObservation = function(id, marker) {
